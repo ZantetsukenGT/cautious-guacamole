@@ -1,2 +1,2 @@
 # cautious-guacamole
-Matriz Dispersa
+Matriz Dispersa, Arbol, Linealizacion, Web Service
