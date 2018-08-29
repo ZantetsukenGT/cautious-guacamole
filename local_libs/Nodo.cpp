@@ -3,15 +3,15 @@
 Nodo::Nodo()
 {
     arriba = abajo = izquierda = derecha = NULL;
-    i = j = dato = 0;
+    i = j = data = 0;
 }
 
-Nodo::Nodo(int i, int j, int dato)
+Nodo::Nodo(int i, int j, int data)
 {
     arriba = abajo = izquierda = derecha = NULL;
     this->i = i;
     this->j = j;
-    this->dato = dato;
+    this->data = data;
 }
 
 void Nodo::Insertar_Al_Frente_Fila(Nodo ** primero, Nodo * nuevo)

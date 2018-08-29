@@ -7,7 +7,7 @@ class Nodo
 {
 public:
     Nodo();
-    Nodo(int i, int j, int dato);
+    Nodo(int i, int j, int data);
 
     Nodo * arriba;
     Nodo * abajo;
@@ -15,7 +15,7 @@ public:
     Nodo * derecha;
 
     int i, j;
-    int dato;
+    int data;
 
     void Insertar_Al_Frente_Fila(Nodo ** primero, Nodo * nuevo);
     void Insertar_Al_Final_Fila(Nodo ** primero, Nodo * nuevo);

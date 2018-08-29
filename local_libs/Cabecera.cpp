@@ -6,6 +6,7 @@ Cabecera::Cabecera()
     siguiente = anterior = NULL;
     fila_o_columna = 0;
 }
+
 Cabecera::Cabecera(int fila_o_columna)
 {
     primero = NULL;

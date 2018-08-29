@@ -1,18 +1,50 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 
-template <class T>
+#include <iostream>
+#include <cstdlib>
+
+
+class NodoArbol
+{
+
+public:
+    NodoArbol();
+    NodoArbol(int data);
+
+    NodoArbol * izquierda;
+    NodoArbol * derecha;
+
+    int Obtener_Data();
+
+private:
+    int data;
+};
+
 class Arbol
 {
 
-    public:
-        Arbol<T>();
-        Arbol<T>(T data);
-        virtual ~Arbol<T>();
-        T data;
-        T getData();
-};
+public:
+    Arbol();
+    Arbol(int data);
 
-template class Arbol<int>;
+    void Insertar(int data);
+
+    void PreOrder();
+    void InOrder();
+    void PostOrder();
+
+    NodoArbol * raiz;
+
+private:
+
+    void AyudanteInsertar(NodoArbol ** raiz, int data);
+
+    void AyudantePreOrder(NodoArbol * raiz);
+    void AyudanteInOrder(NodoArbol * raiz);
+    void AyudantePostOrder(NodoArbol * raiz);
+
+    void Visitar(NodoArbol * raiz);
+};
 
 #endif // ARBOL_H
