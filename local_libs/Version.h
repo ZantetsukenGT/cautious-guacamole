@@ -14,6 +14,10 @@ public:
     Curso * primero;
 
     Version * siguiente;
+
+    void Insertar_Al_Frente(Version ** primero, Version * nuevo);
+
+    Version * Remover_Del_Frente(Version ** primero);
 };
 
 #endif // VERSION_H

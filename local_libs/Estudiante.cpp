@@ -29,7 +29,7 @@ Estudiante::Estudiante(int Carnet, int DPI,std::string Nombres,
     this->horarios = horarios;
 }
 
-    int Estudiante::ObtenerFechaNacimiento()
-    {
-        return DD_Nacimiento + 31*MM_Nacimiento + 372*YYYY_Nacimiento;
-    }
+int Estudiante::ObtenerFechaNacimiento()
+{
+    return DD_Nacimiento + 31*MM_Nacimiento + 372*YYYY_Nacimiento;
+}

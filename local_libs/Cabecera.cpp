@@ -108,7 +108,7 @@ Cabecera * Cabecera::Buscar(int criterio)
     return NULL;
 }
 
-Cabecera * Cabecera::Insertar(Cabecera **primero ,int criterio)
+Cabecera * Cabecera::Insertar(Cabecera **primero,int criterio)
 {
     Cabecera * aux = this->Buscar(criterio);
 
