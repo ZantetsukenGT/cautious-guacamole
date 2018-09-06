@@ -4,13 +4,14 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Estudiante.h"
 
 class NodoArbol
 {
 
 public:
     NodoArbol();
-    NodoArbol(int data);
+    NodoArbol(Estudiante * data);
 
     NodoArbol * izquierda;
     NodoArbol * derecha;
@@ -18,7 +19,7 @@ public:
     int Obtener_Data();
 
 private:
-    int data;
+    Estudiante * data;
 };
 
 class Arbol
@@ -26,9 +27,9 @@ class Arbol
 
 public:
     Arbol();
-    Arbol(int data);
+    Arbol(Estudiante * data);
 
-    void Insertar(int data);
+    void Insertar(Estudiante * data);
 
     void PreOrder();
     void InOrder();
@@ -38,7 +39,7 @@ public:
 
 private:
 
-    void AyudanteInsertar(NodoArbol ** raiz, int data);
+    void AyudanteInsertar(NodoArbol ** raiz, Estudiante * data);
 
     void AyudantePreOrder(NodoArbol * raiz);
     void AyudanteInOrder(NodoArbol * raiz);

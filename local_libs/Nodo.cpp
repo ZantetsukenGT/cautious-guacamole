@@ -3,10 +3,11 @@
 Nodo::Nodo()
 {
     arriba = abajo = izquierda = derecha = NULL;
-    i = j = data = 0;
+    i = j = 0;
+    data = "";
 }
 
-Nodo::Nodo(int i, int j, int data)
+Nodo::Nodo(int i, int j, std::string& data)
 {
     arriba = abajo = izquierda = derecha = NULL;
     this->i = i;
@@ -58,7 +59,7 @@ Nodo * Nodo::Remover_Del_Frente_Fila(Nodo ** primero)
         else
         {
             *primero = this->derecha;
-            this->izquierda = NULL;
+            (*primero)->izquierda = NULL;
 
         }
         return pivote;
@@ -152,7 +153,7 @@ Nodo * Nodo::Remover_Del_Frente_Columna(Nodo ** primero)
         else
         {
             *primero = this->abajo;
-            this->arriba = NULL;
+            (*primero)->arriba = NULL;
 
         }
         return pivote;
@@ -206,14 +207,18 @@ Nodo * Nodo::Buscar_En_Columna(int criterio)
 
 void Nodo::Insertar_En_Fila(Nodo ** primero, Nodo * nuevo)
 {
-    if(this != NULL)
+    if(*primero != NULL)
     {
-        if(nuevo->j < this->j)
+        if(nuevo->j == (*primero)->j)
+        {
+            return;
+        }
+        if(nuevo->j < (*primero)->j)
         {
             Insertar_Al_Frente_Fila(primero,nuevo);
             return;
         }
-        Nodo * pivote = this->derecha;
+        Nodo * pivote = (*primero)->derecha;
         while(pivote != NULL)
         {
             if(nuevo->j == pivote->j)
@@ -239,14 +244,18 @@ void Nodo::Insertar_En_Fila(Nodo ** primero, Nodo * nuevo)
 
 void Nodo::Insertar_En_Columna(Nodo ** primero, Nodo * nuevo)
 {
-    if(this != NULL)
+    if(*primero != NULL)
     {
-        if(nuevo->i < this->i)
+        if(nuevo->i == (*primero)->i)
+        {
+            return;
+        }
+        if(nuevo->i < (*primero)->i)
         {
             Insertar_Al_Frente_Columna(primero,nuevo);
             return;
         }
-        Nodo * pivote = this->abajo;
+        Nodo * pivote = (*primero)->abajo;
         while(pivote != NULL)
         {
             if(nuevo->i == pivote->i)
@@ -268,4 +277,44 @@ void Nodo::Insertar_En_Columna(Nodo ** primero, Nodo * nuevo)
         return;
     }
     Insertar_Al_Frente_Columna(primero, nuevo);
+}
+
+Nodo * Nodo::Remover_En_Fila(Nodo ** primero, int criterio)
+{
+    Nodo * aux = this->Buscar_En_Fila(criterio);
+    if(aux != NULL)
+    {
+        if(aux == this)
+        {
+            return Remover_Del_Frente_Fila(primero);
+        }
+        else if(aux->derecha == NULL)
+        {
+            return Remover_Del_Final_Fila(primero);
+        }
+        aux->izquierda->derecha = aux->derecha;
+        aux->derecha->izquierda = aux->izquierda;
+        return aux;
+    }
+    return NULL;
+}
+
+Nodo * Nodo::Remover_En_Columna(Nodo ** primero, int criterio)
+{
+    Nodo * aux = this->Buscar_En_Columna(criterio);
+    if(aux != NULL)
+    {
+        if(aux == this)
+        {
+            return Remover_Del_Frente_Columna(primero);
+        }
+        else if(aux->abajo == NULL)
+        {
+            return Remover_Del_Final_Columna(primero);
+        }
+        aux->arriba->abajo = aux->abajo;
+        aux->abajo->arriba = aux->arriba;
+        return aux;
+    }
+    return NULL;
 }

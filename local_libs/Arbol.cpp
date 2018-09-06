@@ -6,7 +6,7 @@ NodoArbol::NodoArbol()
     this->data = 0;
 }
 
-NodoArbol::NodoArbol(int data)
+NodoArbol::NodoArbol(Estudiante * data)
 {
 
     this->izquierda = this->derecha = NULL;
@@ -15,7 +15,7 @@ NodoArbol::NodoArbol(int data)
 
 int NodoArbol::Obtener_Data()
 {
-    return this->data;
+    return this->data->Carnet;
 }
 
 
@@ -24,12 +24,12 @@ Arbol::Arbol()
     this->raiz = NULL;
 }
 
-Arbol::Arbol(int data)
+Arbol::Arbol(Estudiante * data)
 {
     this->raiz = new NodoArbol(data);
 }
 
-void Arbol::Insertar(int data)
+void Arbol::Insertar(Estudiante * data)
 {
     AyudanteInsertar(&this->raiz, data);
 }
@@ -49,17 +49,17 @@ void Arbol::PostOrder()
     AyudantePostOrder(this->raiz);
 }
 
-void Arbol::AyudanteInsertar(NodoArbol ** raiz, int data)
+void Arbol::AyudanteInsertar(NodoArbol ** raiz, Estudiante * data)
 {
     if(*raiz == NULL)
     {
         *raiz = new NodoArbol(data);
     }
-    else if(data < (*raiz)->Obtener_Data())
+    else if(data->Carnet < (*raiz)->Obtener_Data())
     {
         AyudanteInsertar(&(*raiz)->izquierda, data);
     }
-    else if(data > (*raiz)->Obtener_Data())
+    else if(data->Carnet > (*raiz)->Obtener_Data())
     {
         AyudanteInsertar(&(*raiz)->derecha, data);
     }

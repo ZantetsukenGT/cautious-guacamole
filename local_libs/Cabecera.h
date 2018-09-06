@@ -26,6 +26,7 @@ public:
     Cabecera * Buscar(int criterio);
 
     Cabecera * Insertar(Cabecera ** primero, int criterio);
+    void Remover(Cabecera ** primero, int criterio);
 };
 
 #endif // CABECERA_H

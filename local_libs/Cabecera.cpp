@@ -58,7 +58,7 @@ Cabecera * Cabecera::Remover_Del_Frente(Cabecera ** primero)
         else
         {
             *primero = this->siguiente;
-            this->anterior = NULL;
+            (*primero)->anterior = NULL;
 
         }
         return pivote;
@@ -145,4 +145,25 @@ Cabecera * Cabecera::Insertar(Cabecera **primero ,int criterio)
     }
     Insertar_Al_Frente(primero, nuevo);
     return nuevo;
+}
+
+void Cabecera::Remover(Cabecera **primero, int criterio)
+{
+    Cabecera * aux = this->Buscar(criterio);
+
+    if(aux != NULL && aux->primero == NULL)
+    {
+        if(aux == this)
+        {
+            Remover_Del_Frente(primero);
+            return;
+        }
+        else if(aux->siguiente == NULL)
+        {
+            Remover_Del_Final(primero);
+            return;
+        }
+        aux->anterior->siguiente = aux->siguiente;
+        aux->siguiente->anterior = aux->anterior;
+    }
 }
