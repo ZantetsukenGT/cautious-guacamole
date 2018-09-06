@@ -1,2 +1,2 @@
 # cautious-guacamole
-Matriz Dispersa, Arbol, Linealizacion, Web Service
+Matriz Dispersa, Ortogonal, Hibrida(Dispersa y Ortogonal), ABB, Linealizacion, REST API
