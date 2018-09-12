@@ -29,7 +29,7 @@ public:
     Arbol();
     Arbol(Estudiante * data);
 
-    void Insertar(Estudiante * data);
+    bool Insertar(Estudiante * data);
 
     void PreOrder();
     void InOrder();
@@ -39,7 +39,7 @@ public:
 
 private:
 
-    void AyudanteInsertar(NodoArbol ** raiz, Estudiante * data);
+    bool AyudanteInsertar(NodoArbol ** raiz, Estudiante * data);
 
     void AyudantePreOrder(NodoArbol * raiz);
     void AyudanteInOrder(NodoArbol * raiz);

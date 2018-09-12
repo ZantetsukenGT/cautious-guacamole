@@ -3,7 +3,7 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
+#include <string>
 #include <ctime>
 
 void GenerarSeed();
@@ -12,12 +12,6 @@ int Contar_Digitos(int n);
 
 int randomizer(int Min, int Max);
 
-char * ConcatenarCharNumero(char *a, int n);
-
-char * ConcatenarCharChar(char *a, char *b);
-
-char * ConcatenarNumeroNumero(int a, int n);
-
-char * CopiarCadena(char *a);
+int * SplitFecha(std::string cadena);
 
 #endif // ESENCIALES_H_INCLUDED
