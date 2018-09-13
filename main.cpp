@@ -1,41 +1,58 @@
 #include <iostream>
-
-#include "Arbol.h"
-#include "MatrizHibrida.h"
-#include "esenciales.h"
-
-
+#include <fstream>
+#include <string>
+#include "local_libs/Arbol.h"
+#include "local_libs/MatrizHibrida.h"
+#include "local_libs/esenciales.h"
 int main()
 {
-    GenerarSeed();
-    MatrizDispersa *a1 = new MatrizDispersa();
+    Esencial * e = new Esencial();
+    e->GenerarSeed();
+    MatrizDispersa *m1 = new MatrizDispersa();
 
     for(int i = 0; i < 500; i++)
     {
-        std::string value = "sex";
-        int j = randomizer(0,10);
-        int k = randomizer(0,10);
-        a1->Insertar(j,k,value);
+        std::string value = "verde";
+        int j = e->randomizer(0,10);
+        int k = e->randomizer(0,10);
+        m1->Insertar(j,k,value);
     }
+    /*
+        m1->Imprimir();
+        printf("\n\n");
+        for(int i = 0; i < 500; i++)
+        {
+            int j = randomizer(0,10);
+            int k = randomizer(0,m1->sizecolumnas);
+            m1->Remover(j,k);
+        }
 
-    /*a1->Imprimir();
-    printf("\n\n");
-    for(int i = 0; i < 500; i++)
+        m1->Imprimir();*/
+
+    Arbol *a1 = new Arbol();
+    Estudiante * e1 = NULL;
+    for(int i = 0; i < 30; i++)
     {
-        int j = randomizer(0,10);
-        int k = randomizer(0,a1->sizecolumnas);
-        a1->Remover(j,k);
+        e1 = new Estudiante();
+        e1->Carnet = e->randomizer(0,30);//etc
+        if(a1->Insertar(e1))
+            std::cout << "correcto" << std::endl;
+        else
+            std::cout << "incorrecto" << std::endl;
     }
 
-    a1->Imprimir();*/
 
-    Arbol *a2 = new Arbol();
-    Estudiante * e1 = new Estudiante();
-    e1->Imagen = a1;
-    e1->Carnet = 22;//etc
+    std::string texto = "digraph G { rankdir = TB; node[shape=circle]; \n\n ";
+	texto+= a1->PreOrderFormat();
+	texto+= "\n\n";
+	texto+= a1->PreOrderLink();
+	texto+= "} ";
 
-    a2->Insertar(e1);
-    a2->PreOrder();
+	std::ofstream f;
+	f.open("Arbol.dot");
+	f << texto;
+	f.close();
+    system("dot -Tpng Arbol.dot -o Arbol.png");
 
     return 0;
 }
