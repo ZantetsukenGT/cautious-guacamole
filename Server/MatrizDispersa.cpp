@@ -40,10 +40,10 @@ std::string MatrizDispersa::GenerarGrafo(int criterio)
     {
         input = this->ImprimirMatrizNodos();
         std::ofstream f;
-        f.open("temporalMatrizNodos.dot");
+        f.open("public/temporalMatrizNodos.dot");
         f << input;
         f.close();
-    	system("dot -Tpng temporalMatrizNodos.dot -o temporalMatrizNodos.png");
+    	system("dot -Tpng public/temporalMatrizNodos.dot -o public/temporalMatrizNodos.png");
     	result = "temporalMatrizNodos.png";
     	return result;
     }
@@ -51,10 +51,10 @@ std::string MatrizDispersa::GenerarGrafo(int criterio)
     {
         input = this->ImprimirMatrizImagen();
         std::ofstream f;
-        f.open("temporalMatrizImagen.dot");
+        f.open("public/temporalMatrizImagen.dot");
         f << input;
         f.close();
-    	system("neato -n -Tpng temporalMatrizImagen.dot -o temporalMatrizImagen.png");
+    	system("neato -n -Tpng public/temporalMatrizImagen.dot -o public/temporalMatrizImagen.png");
     	result = "temporalMatrizImagen.png";
     	return result;
     }
@@ -62,10 +62,10 @@ std::string MatrizDispersa::GenerarGrafo(int criterio)
     {
         input = this->ImprimirMatrizImagen();
         std::ofstream f;
-        f.open("Imagen" + std::to_string(criterio) +".dot");
+        f.open("public/Imagen" + std::to_string(criterio) +".dot");
         f << input;
         f.close();
-        std::string cmd = "neato -n -Tpng Imagen" + std::to_string(criterio) +".dot -o Imagen" + std::to_string(criterio) +".png";
+        std::string cmd = "neato -n -Tpng public/Imagen" + std::to_string(criterio) +".dot -o public/Imagen" + std::to_string(criterio) +".png";
     	system(cmd.c_str());
     	result = "Imagen" + std::to_string(criterio) +".png";
     	return result;
