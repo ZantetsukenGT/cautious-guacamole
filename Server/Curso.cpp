@@ -2,7 +2,29 @@
 
 Curso::Curso()
 {
-    //ctor
+    this->Codigo = -1;
+    this->Nombre = "";
+    this->Seccion = "";
+    this->Edificio = "";
+    this->Salon = -1;
+    this->Catedratico = "";
+    this->horario = NULL;
+
+    this->siguiente = NULL;
+}
+
+Curso::Curso(int Codigo, std::string Nombre, std::string Seccion, std::string Edificio,
+             int Salon, std::string Catedratico)
+{
+    this->Codigo = Codigo;
+    this->Nombre = Nombre;
+    this->Seccion = Seccion;
+    this->Edificio = Edificio;
+    this->Salon = Salon;
+    this->Catedratico = Catedratico;
+    this->horario = NULL;
+
+    this->siguiente = NULL;
 }
 
 void Curso::Insertar_Al_Frente(Curso ** primero, Curso * nuevo)

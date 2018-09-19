@@ -2,7 +2,20 @@
 
 Dia::Dia()
 {
-    //ctor
+    this->nombre = "";
+    this->HH_inicio = "";
+    this->HH_fin = "";
+
+    this->siguiente = NULL;
+}
+
+Dia::Dia(std::string nombre, std::string HH_inicio, std::string HH_fin)
+{
+    this->nombre = nombre;
+    this->HH_inicio = HH_inicio;
+    this->HH_fin = HH_fin;
+
+    this->siguiente = NULL;
 }
 
 void Dia::Insertar_Al_Frente(Dia ** primero, Dia * nuevo)
@@ -78,14 +91,14 @@ Dia * Dia::Remover_Del_Final(Dia ** primero)
     return NULL;
 }
 
-Dia * Dia::Buscar(int criterio)
+Dia * Dia::Buscar(std::string criterio)
 {
     if(this != NULL)
     {
         Dia * pivote = this;
         while(pivote != NULL)
         {
-            if(pivote->dia == criterio)
+            if(pivote->nombre == criterio)
             {
                 return pivote;
             }
@@ -95,46 +108,7 @@ Dia * Dia::Buscar(int criterio)
     return NULL;
 }
 
-
-
-Dia * Dia::Insertar(Dia ** primero, Dia * nuevo)
-{
-    Dia * aux = Buscar(nuevo->dia);
-    if(aux != NULL)
-    {
-        return aux;
-    }
-    if(*primero != NULL)
-    {
-        if(nuevo->dia < (*primero)->dia)
-        {
-            Insertar_Al_Frente(primero,nuevo);
-            return nuevo;
-        }
-        Dia * pivote = (*primero)->siguiente;
-        while(pivote != NULL)
-        {
-            if(nuevo->dia < pivote->dia)
-            {
-                Dia * pivote2 = *primero;
-                while(pivote2->siguiente != pivote)
-                {
-                    pivote2 = pivote2->siguiente;
-                }
-                nuevo->siguiente = pivote2->siguiente;
-                pivote2->siguiente = nuevo;
-                return nuevo;
-            }
-            pivote = pivote->siguiente;
-        }
-        Insertar_Al_Final(primero,nuevo);
-        return nuevo;
-    }
-    Insertar_Al_Frente(primero, nuevo);
-    return nuevo;
-}
-
-Dia * Dia::Remover(Dia ** primero, int criterio)
+Dia * Dia::Remover(Dia ** primero, std::string criterio)
 {
     Dia * aux = Buscar(criterio);
     if(aux != NULL)

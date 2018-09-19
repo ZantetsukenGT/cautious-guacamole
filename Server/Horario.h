@@ -9,6 +9,7 @@ class Horario
 {
 public:
     Horario();
+    Horario(int YYYY);
 
     int YYYY;
 

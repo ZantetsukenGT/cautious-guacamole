@@ -8,13 +8,11 @@ class Dia
 {
 public:
     Dia();
+    Dia(std::string nombre, std::string HH_inicio, std::string HH_fin);
 
     std::string nombre;
-    int dia;
-    int HH_inicio;
-    int MM_inicio;
-    int HH_fin;
-    int MM_fin;
+    std::string HH_inicio;
+    std::string HH_fin;
 
     Dia * siguiente;
 
@@ -24,11 +22,9 @@ public:
     Dia * Remover_Del_Frente(Dia ** primero);
     Dia * Remover_Del_Final(Dia ** primero);
 
-    Dia * Buscar(int criterio);
-///////////////////////////////////////////////////////////////////////
-    Dia * Insertar(Dia ** primero, Dia * nuevo);
+    Dia * Buscar(std::string criterio);
 
-    Dia * Remover(Dia ** primero, int criterio);
+    Dia * Remover(Dia ** primero, std::string criterio);
 };
 
 #endif // DIA_H

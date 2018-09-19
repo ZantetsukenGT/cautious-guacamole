@@ -34,31 +34,81 @@ Arbol::Arbol(Estudiante * data)
     this->raiz = new NodoArbol(data);
 }
 
+NodoArbol ** Arbol::Buscar(int criterio)
+{
+    return AyudanteBuscar(&this->raiz, criterio);
+}
+
 bool Arbol::Insertar(Estudiante * data)
 {
     return AyudanteInsertar(&this->raiz, data);
 }
 
-Estudiante * Arbol::Buscar(int criterio)
+void Arbol::Modificar(Estudiante * nuevo, int viejo)
 {
-    return AyudanteBuscar(raiz, criterio);
+    Estudiante * old = Remover(viejo);
+    nuevo->horarios = old->horarios;
+    nuevo->Imagen = old->Imagen;
+    Insertar(nuevo);
 }
 
-Estudiante * Arbol::AyudanteBuscar(NodoArbol * raiz, int criterio)
+Estudiante * Arbol::Remover(int criterio)
 {
-    if(raiz == NULL)
+    NodoArbol ** remover = Buscar(criterio);
+    NodoArbol * pivote = *remover;
+    if(*remover != NULL)
     {
-        return NULL;
+        if((*remover)->izquierda && (*remover)->derecha)
+        {
+            NodoArbol * MenorDeMayores = BuscarMenorDeMayores((*remover)->derecha);
+
+            Remover(MenorDeMayores->Obtener_Clave());
+
+            MenorDeMayores->izquierda = (*remover)->izquierda;
+            MenorDeMayores->derecha = (*remover)->derecha;
+            *remover = MenorDeMayores;
+        }
+        else if((*remover)->izquierda && !(*remover)->derecha)
+        {
+            *remover = (*remover)->izquierda;
+        }
+        else if(!(*remover)->izquierda && (*remover)->derecha)
+        {
+            *remover = (*remover)->derecha;
+        }
+        else
+        {
+            *remover = NULL;
+        }
+        return pivote->Get_Data();
     }
-    else if(criterio < raiz->Obtener_Clave())
+    return NULL;
+}
+
+NodoArbol * Arbol::BuscarMenorDeMayores(NodoArbol * raiz)
+{
+    if(raiz->izquierda != NULL)
     {
-        return AyudanteBuscar(raiz->izquierda, criterio);
+        return BuscarMenorDeMayores(raiz->izquierda);
     }
-    else if(criterio > raiz->Obtener_Clave())
+    return raiz;
+}
+
+NodoArbol ** Arbol::AyudanteBuscar(NodoArbol ** raiz, int criterio)
+{
+    if((*raiz) == NULL)
     {
-        return AyudanteBuscar(raiz->derecha, criterio);
+        return raiz;
     }
-    return raiz->Get_Data();
+    else if(criterio < (*raiz)->Obtener_Clave())
+    {
+        return AyudanteBuscar(&(*raiz)->izquierda, criterio);
+    }
+    else if(criterio > (*raiz)->Obtener_Clave())
+    {
+        return AyudanteBuscar(&(*raiz)->derecha, criterio);
+    }
+    return raiz;
 }
 
 bool Arbol::AyudanteInsertar(NodoArbol ** raiz, Estudiante * data)

@@ -1,6 +1,6 @@
-#include "Horario.h"
+#include "Historial.h"
 
-Horario::Horario()
+Historial::Historial()
 {
     YYYY = -1;
 
@@ -12,7 +12,7 @@ Horario::Horario()
     this->siguiente = NULL;
 }
 
-Horario::Horario(int YYYY)
+Historial::Historial(int YYYY)
 {
     this->YYYY = YYYY;
 
@@ -24,7 +24,7 @@ Horario::Horario(int YYYY)
     this->siguiente = NULL;
 }
 
-void Horario::Insertar_Al_Frente(Horario ** primero, Horario * nuevo)
+void Historial::Insertar_Al_Frente(Historial ** primero, Historial * nuevo)
 {
     if(*primero == NULL)
     {
@@ -34,7 +34,7 @@ void Horario::Insertar_Al_Frente(Horario ** primero, Horario * nuevo)
     else
     {
         nuevo->siguiente = *primero;
-        Horario * pivote = *primero;
+        Historial * pivote = *primero;
         while(pivote->siguiente != *primero)
         {
             pivote = pivote->siguiente;
@@ -45,7 +45,7 @@ void Horario::Insertar_Al_Frente(Horario ** primero, Horario * nuevo)
     }
 }
 
-void Horario::Insertar_Al_Final(Horario ** primero, Horario * nuevo)
+void Historial::Insertar_Al_Final(Historial ** primero, Historial * nuevo)
 {
     if(*primero == NULL)
     {
@@ -55,7 +55,7 @@ void Horario::Insertar_Al_Final(Horario ** primero, Horario * nuevo)
     else
     {
         nuevo->siguiente = *primero;
-        Horario * pivote = *primero;
+        Historial * pivote = *primero;
         while(pivote->siguiente != *primero)
         {
             pivote = pivote->siguiente;
@@ -64,18 +64,18 @@ void Horario::Insertar_Al_Final(Horario ** primero, Horario * nuevo)
     }
 }
 
-Horario * Horario::Remover_Del_Frente(Horario ** primero)
+Historial * Historial::Remover_Del_Frente(Historial ** primero)
 {
     if(*primero != NULL)
     {
-        Horario * pivote = *primero;
+        Historial * pivote = *primero;
         if(pivote->siguiente == *primero)
         {
             *primero = NULL;
         }
         else
         {
-            Horario * pivote2 = *primero;
+            Historial * pivote2 = *primero;
             while(pivote2->siguiente != *primero)
             {
                 pivote2 = pivote2->siguiente;
@@ -88,18 +88,18 @@ Horario * Horario::Remover_Del_Frente(Horario ** primero)
     return NULL;
 }
 
-Horario * Horario::Remover_Del_Final(Horario ** primero)
+Historial * Historial::Remover_Del_Final(Historial ** primero)
 {
     if(this != NULL)
     {
-        Horario * pivote = this;
+        Historial * pivote = this;
         if(pivote->siguiente == *primero)
         {
             *primero = NULL;
         }
         else
         {
-            Horario * pivote2 = NULL;
+            Historial * pivote2 = NULL;
 
             while(pivote->siguiente != *primero)
             {
@@ -113,11 +113,11 @@ Horario * Horario::Remover_Del_Final(Horario ** primero)
     return NULL;
 }
 
-Horario * Horario::Buscar(int criterio)
+Historial * Historial::Buscar(int criterio)
 {
     if(this != NULL)
     {
-        Horario * pivote = this;
+        Historial * pivote = this;
         do{
             if(pivote->YYYY == criterio)
             {
@@ -132,9 +132,9 @@ Horario * Horario::Buscar(int criterio)
 
 
 
-Horario * Horario::Insertar(Horario ** primero, Horario * nuevo)
+Historial * Historial::Insertar(Historial ** primero, Historial * nuevo)
 {
-    Horario * aux = Buscar(nuevo->YYYY);
+    Historial * aux = Buscar(nuevo->YYYY);
     if(aux != NULL)
     {
         return aux;
@@ -146,12 +146,12 @@ Horario * Horario::Insertar(Horario ** primero, Horario * nuevo)
             Insertar_Al_Frente(primero,nuevo);
             return nuevo;
         }
-        Horario * pivote = (*primero)->siguiente;
+        Historial * pivote = (*primero)->siguiente;
         while(pivote != *primero)
         {
             if(nuevo->YYYY < pivote->YYYY)
             {
-                Horario * pivote2 = *primero;
+                Historial * pivote2 = *primero;
                 while(pivote2->siguiente != pivote)
                 {
                     pivote2 = pivote2->siguiente;
@@ -169,9 +169,9 @@ Horario * Horario::Insertar(Horario ** primero, Horario * nuevo)
     return nuevo;
 }
 
-Horario * Horario::Remover(Horario ** primero, int criterio)
+Historial * Historial::Remover(Historial ** primero, int criterio)
 {
-    Horario * aux = Buscar(criterio);
+    Historial * aux = Buscar(criterio);
     if(aux != NULL)
     {
         if(aux == this)
@@ -182,7 +182,7 @@ Horario * Horario::Remover(Horario ** primero, int criterio)
         {
             return Remover_Del_Final(primero);
         }
-        Horario * pivote2 = *primero;
+        Historial * pivote2 = *primero;
         while(pivote2->siguiente != aux)
         {
             pivote2 = pivote2->siguiente;

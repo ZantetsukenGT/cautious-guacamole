@@ -12,7 +12,7 @@ Estudiante::Estudiante()
 Estudiante::Estudiante(int Carnet, int DPI,std::string Nombres,
                        std::string Apellidos, int DD_Nacimiento,int MM_Nacimiento,
                        int YYYY_Nacimiento,std::string Direccion,int Creditos,
-                       MatrizDispersa *Imagen, std::string Password, Horario * horarios)
+                       MatrizDispersa *Imagen, std::string Password, Historial * horarios)
 
 {
     this->Carnet = Carnet;

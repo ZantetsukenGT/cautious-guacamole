@@ -9,14 +9,16 @@ class Curso
 {
 public:
     Curso();
+    Curso(int Codigo, std::string Nombre, std::string Seccion, std::string Edificio,
+          int Salon, std::string Catedratico);
 
     int Codigo;
     std::string Nombre;
-    char Seccion;
+    std::string Seccion;
     std::string Edificio;
     int Salon;
     std::string Catedratico;
-    Dia * dias;
+    Dia * horario;
 
     Curso * siguiente;
 

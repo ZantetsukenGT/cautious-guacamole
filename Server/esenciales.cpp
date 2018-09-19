@@ -34,12 +34,13 @@ int * Esencial::SplitFecha(std::string cadena)
         if(cadena[i] != '/')
         {
             temporal+=cadena[i];
+            if(i == (signed int)cadena.length() - 1)
+                arr[j++] = std::atoi(temporal.c_str());
             continue;
         }
         arr[j++] = std::atoi(temporal.c_str());
         temporal = "";
     }
-    arr[2] = std::atoi(temporal.c_str());
     return arr;
 }
 

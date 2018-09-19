@@ -9,6 +9,7 @@ class Version
 {
 public:
     Version();
+    Version(std::string nombre_version);
 
     std::string nombre_version;
     Curso * primero;
@@ -18,6 +19,8 @@ public:
     void Insertar_Al_Frente(Version ** primero, Version * nuevo);
 
     Version * Remover_Del_Frente(Version ** primero);
+
+    Version * Buscar(std::string criterio);
 };
 
 #endif // VERSION_H

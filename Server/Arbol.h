@@ -30,8 +30,11 @@ public:
     Arbol();
     Arbol(Estudiante * data);
 
+    NodoArbol ** Buscar(int criterio);
     bool Insertar(Estudiante * data);
-    Estudiante * Buscar(int criterio);
+
+    Estudiante * Remover(int criterio);
+    void Modificar(Estudiante * nuevo, int viejo);
 
     std::string PreOrderFormat();
     std::string PreOrderLink();
@@ -40,8 +43,9 @@ public:
 
 private:
 
+    NodoArbol * BuscarMenorDeMayores(NodoArbol * raiz);
     bool AyudanteInsertar(NodoArbol ** raiz, Estudiante * data);
-    Estudiante * AyudanteBuscar(NodoArbol * raiz, int criterio);
+    NodoArbol ** AyudanteBuscar(NodoArbol ** raiz, int criterio);
 
     std::string AyudantePreOrderFormat(NodoArbol * raiz);
     std::string AyudantePreOrderLink(NodoArbol * raiz);

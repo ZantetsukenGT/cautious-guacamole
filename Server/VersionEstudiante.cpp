@@ -1,20 +1,20 @@
-#include "Version.h"
+#include "VersionEstudiante.h"
 
-Version::Version()
+VersionEstudiante::VersionEstudiante()
 {
     this->nombre_version = "";
     this->primero = NULL;
     this->siguiente = NULL;
 }
 
-Version::Version(std::string nombre_version)
+VersionEstudiante::VersionEstudiante(std::string nombre_version)
 {
     this->nombre_version = nombre_version;
     this->primero = NULL;
     this->siguiente = NULL;
 }
 
-void Version::Insertar_Al_Frente(Version ** primero, Version * nuevo)
+void VersionEstudiante::Insertar_Al_Frente(VersionEstudiante ** primero, VersionEstudiante * nuevo)
 {
     if(this == NULL)
     {
@@ -27,11 +27,11 @@ void Version::Insertar_Al_Frente(Version ** primero, Version * nuevo)
     }
 }
 
-Version * Version::Remover_Del_Frente(Version ** primero)
+VersionEstudiante * VersionEstudiante::Remover_Del_Frente(VersionEstudiante ** primero)
 {
     if(this != NULL)
     {
-        Version * pivote = this;
+        VersionEstudiante * pivote = this;
         if(pivote->siguiente == NULL)
         {
             *primero = NULL;
@@ -45,11 +45,11 @@ Version * Version::Remover_Del_Frente(Version ** primero)
     return NULL;
 }
 
-Version * Version::Buscar(std::string criterio)
+VersionEstudiante * VersionEstudiante::Buscar(std::string criterio)
 {
     if(this != NULL)
     {
-        Version * pivote = this;
+        VersionEstudiante * pivote = this;
         while(pivote != NULL)
         {
             if(pivote->nombre_version == criterio)
