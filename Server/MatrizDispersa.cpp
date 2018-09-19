@@ -36,7 +36,7 @@ std::string MatrizDispersa::GenerarGrafo(int criterio)
 {
     std::string result = "";
     std::string input = "";
-    if(criterio != -1)
+    if(criterio == -1)
     {
         input = this->ImprimirMatrizNodos();
         std::ofstream f;
@@ -47,7 +47,7 @@ std::string MatrizDispersa::GenerarGrafo(int criterio)
     	result = "public/temporalMatrizNodos.png";
     	return result;
     }
-    else if(criterio != -2)
+    else if(criterio == -2)
     {
         input = this->ImprimirMatrizImagen();
         std::ofstream f;
