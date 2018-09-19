@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
+  		<meta charset="UTF-8">
+		<script type="text/javascript" src="libraries/p5.js"></script>
+		<script type="text/javascript" src="libraries/p5.dom.js"></script>
+		<script type="text/javascript" src="libraries/esenciales.js"></script>
 		<title>Cyste+ Manager</title>
 	</head>
 	<body style="background-color:#d9d9d9">
 		<center>
-		<br><br><br><br>
+			<br><br><br><br>
 		<h1>Cyste+ Manager 1.0</h1>
 		<h2>Administracion: Control Panel</h2>
-		<br><br><br><br>
-		<button id="adm_estudiantes" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/Administrar_Estudiantes.html')">Administrar Estudiantes</button><br><br>
-		<button id="adm_horarios" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/Administrar_Horarios.html')">Administrar Horarios (Global)</button><br><br><br>
-		<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/home.html')">Cerrar Sesion</button>
+			<hr><hr>
+		<button id="bConfig" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/Configuracion.html')">Configuracion (Global)</button>
+			<hr><hr>
+		<button id="bEstudiantes" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/Administrar_Estudiantes.html')">Administrar Estudiantes</button>
+			<br><br>
+		<button id="bHorarios" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/Administrar_Horarios.html')">Administrar Horarios (Global)</button>
+			<hr><hr>
+		<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/')">Cerrar Sesion</button>
 
 		<script type="text/javascript" src="AdminCP.js"></script>
 

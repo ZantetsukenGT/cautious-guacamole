@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+  		<meta charset="UTF-8">
+		<script type="text/javascript" src="libraries/p5.js"></script>
+		<script type="text/javascript" src="libraries/p5.dom.js"></script>
+		<script type="text/javascript" src="libraries/esenciales.js"></script>
 		<title>Cyste+ Manager</title>
 	</head>
 	<body style="background-color:#d9d9d9">
@@ -8,7 +12,11 @@
 				<br><br><br><br>
 			<h1>Cyste+ Manager 1.0</h1>
 			<h2>Administracion: Administrar Estudiantes</h2>
-				<br><br><br><br>
+				<br><br>
+			Cargar Estudiantes:
+				<br><br>
+			<button id="bCargarEstudiantes" onclick="CargarEstudiantes()">Cargar</button>
+				<hr><hr>
 			Carnet: <input type="text" id="textBoxCarnet" placeholder="e.g: 201602988">
 				<br><br>
 			DPI: <input type="text" id="textBoxDPI" placeholder="e.g: 2993 96223 0101">
@@ -25,28 +33,27 @@
 				<br><br>
 			# Creditos: <input type="text" id="textBoxCreditos" placeholder="e.g: 250">
 				<br><br>
-			Imagen: <textarea id="textBoxImagen" rows="10" cols="30" placeholder="e.g: 
-[intX],[intY]:#[hexValue]
-[intX],[intY]:#[hexValue]
-[intX],[intY]:#[hexValue]"></textarea>
-			<div id="divImagen">
-			</div>
+			Imagen: 
 				<br><br>
-			Contrasena (Opcional): <input type="text" id="textBoxContrasena" placeholder="e.g: myP@ss1234">
+			<button id="bVerImagenNodos" onclick="VerImagenNodos()">Ver Nodos de Imagen</button>
+				<br><br>
+			<button id="bVerImagen" onclick="VerImagen()">Ver Imagen</button>
+				<br><br>
+			Contrasena: <input type="text" id="textBoxContrasena" placeholder="e.g: myP@ss1234">
 				<br><br>
 			<button id="bAgregar" onclick="AgregarEstudiante()">Agregar Estudiante</button>
 				<hr><hr>
-			<input type="text" id="textBoxModificar" placeholder="e.g: 201682988" onkeyup="HabilitarModificar()">
-			<button id="bModificar" onclick="ModificarEstudiante()">Modificar Estudiante</button>
+			<input type="text" id="textBoxModificarEliminar" placeholder="e.g: 201602988"">
+			<button id="bBuscar" onclick="BuscarEstudiante()">Buscar</button>
 				<br><br>
-			<input type="text" id="textBoxEliminar" placeholder="e.g: 20162988" onkeyup="HabilitarEliminar()">
+			<button id="bModificar" onclick="ModificarEstudiante()">Modificar Estudiante</button>
+			<button id="bVisualizar" onclick="VisualizarEstudiante()">Visualizar Estudiante</button>
+				<br><br>
 			<button id="bEliminar" onclick="EliminarEstudiante()">Eliminar Estudiante</button>
 				<hr><hr>
 			<button id="visualizar" onclick="VisualizarArbol()">Visualizar (Arbol)</button>
-			<div id="divArbol">
-			</div>
 				<hr><hr>
-			<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/AdminCP.html')">Cancelar</button>
+			<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/AdminCP.html')">Regresar</button>
 		</center>
 		<script type="text/javascript" src="Administrar_Estudiantes.js"></script>
 	</body>

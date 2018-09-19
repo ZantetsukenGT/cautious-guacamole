@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="UTF-8">
+		<script type="text/javascript" src="libraries/p5.js"></script>
+		<script type="text/javascript" src="libraries/p5.dom.js"></script>
+		<script type="text/javascript" src="libraries/esenciales.js"></script>
+		<title>Cyste+ Manager</title>
+	</head>
+	<body style="background-color:#d9d9d9">
+		<center>
+		<br><br><br><br>
+		<h1>Cyste+ Manager 1.0</h1>
+		<h2>Administracion: Configuracion</h2>
+		<br><br><br><br>
+		Ciclo Actual (Global para todos los usuarios)
+			<br><br>
+		Año
+		<input type="text" id="yyyy" placeholder="e.g 2018"></button>
+			<br><br>
+		Ciclo
+		<select id="ciclos">
+			<option>primer_semestre</option>
+			<option>segundo_semestre</option>
+			<option>vacas_junio</option>
+			<option>vacas_diciembre</option>
+		</select>
+			<br><br><br>
+		<button id="bGuardar" onclick="Guardar()">Guardar</button>
+			<hr><hr>
+		<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/AdminCP.html')">Regresar</button>
+
+		<script type="text/javascript" src="Configuracion.js"></script>
+
+		</center>
+	</body>
+</html>

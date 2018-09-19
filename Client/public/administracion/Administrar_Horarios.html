@@ -1,19 +1,159 @@
 <!DOCTYPE html>
 <html>
 	<head>
+  		<meta charset="UTF-8">
+		<script type="text/javascript" src="libraries/p5.js"></script>
+		<script type="text/javascript" src="libraries/p5.dom.js"></script>
+		<script type="text/javascript" src="libraries/esenciales.js"></script>
 		<title>Cyste+ Manager</title>
 	</head>
 	<body style="background-color:#d9d9d9">
 		<center>
-		<br><br><br><br>
-		<h1>Cyste+ Manager 1.0</h1>
-		<h2>Administracion</h2>
-		<br><br><br><br>
-		<button id="entrar" onclick="window.open('http://192.168.56.1:8080/Crear_Cuenta.html')">Administrar Estudiantes</button><br><br>
-		<button id="registrar" onclick="window.open('http://192.168.56.1:8080/Crear_Cuenta.html')">Administrar Horarios (Global)</button><br>
+				<br><br><br><br>
+			<h1>Cyste+ Manager 1.0</h1>
+			<h2>Administracion: Administrar Horarios</h2>
+				<br><br>
+			Cargar Horarios:
+				<br><br>
+			Año
+			<input type="text" id="textBoxYYYYCargaMasiva" style="width: 60px" placeholder="e.g: 2018"></button>
+			Ciclo
+			<select id="ciclosOptionsCargaMasiva">
+				<option>primer_semestre</option>
+				<option>segundo_semestre</option>
+				<option>vacas_junio</option>
+				<option>vacas_diciembre</option>
+			</select>
+				<br><br>
+			Version: <input type="text" id="textBoxVersionCargaMasiva" placeholder="e.g: 1.0 STRICTLY HARD">
+				<br><br>
+			<button id="bCargarHorarios" onclick="CargarHorarios()">Cargar</button>
 
-		<script type="text/javascript" src="home.js"></script>
 
+
+				<hr><hr>
+
+
+
+			<h1>Ciclos</h1>
+			Año
+			<input type="text" id="textBoxYYYY" style="width: 60px" placeholder="e.g: 2018"></button>
+			Ciclo
+			<select id="ciclosOptions">
+				<option>primer_semestre</option>
+				<option>segundo_semestre</option>
+				<option>vacas_junio</option>
+				<option>vacas_diciembre</option>
+			</select>
+				<br><br>
+			Version: <input type="text" id="textBoxVersion" placeholder="e.g: 1.0 STRICTLY HARD">
+				<br><br>
+			<button id="bAgregarHorario" onclick="AgregarHorario()">Agregar Horario</button>
+
+
+
+				<hr><hr>
+
+
+
+			Año
+			<input type="text" id="textBoxBuscar" style="width: 60px" placeholder="e.g: 2018">
+			<button id="bBuscarHorario" onclick="BuscarHorario()">Buscar</button>
+				<br><br>
+			<button id="bEliminarHorario" onclick="EliminarHorario()">Eliminar Horario</button>
+			<button id="bVisualizarHorario" onclick="VisualizarHorario()">Visualizar Horario</button>
+
+
+
+				<hr><hr>
+
+
+
+			<button id="bVisualizarTodosHorarios" onclick="VisualizarTodosHorarios()">Visualizar todos los horarios</button>
+
+
+
+				<hr><hr>
+				<hr><hr>
+
+
+
+				<h1> Curso </h1>
+				Año
+				<select id="yyyyOptions" onchange="yyyySelected()">
+				</select>
+					<br><br>
+				Ciclo
+				<select id="ciclosCursoOptions" onchange="cicloSelected()">
+				</select>
+				<button id="bVisualizarCiclo" onclick="VisualizarCiclo()">Visualizar Ciclo</button>
+					<br><br>
+				Version
+				<select id="versionOptions">
+				</select>
+
+
+
+				<hr><hr>
+
+
+
+			Codigo del Curso: <input type="text" id="textBoxCodigo" placeholder="e.g: 770">
+				<br><br>
+			Nombre: <input type="text" id="textBoxNombre" placeholder="e.g: IPC1">
+				<br><br>
+			Seccion: <input type="text" id="textBoxSeccion" placeholder="e.g: A">
+				<br><br>
+			Edificio: <input type="text" id="textBoxEdificio" placeholder="e.g: T3">
+				<br><br>
+			Salon: <input type="text" id="textBoxSalon" placeholder="e.g: 210">
+				<br><br>
+			Catedrático: <input type="text" id="textBoxCatedratico" placeholder="e.g: Moises Velasquez">
+
+
+
+				<hr><hr>
+
+
+
+			Dias: <input type="text" id="textBoxDia" placeholder="e.g: miercoles">
+				<br><br>
+
+			Hora Inicio: <input type="text" id="textBoxHHinicio" style="width: 50px" placeholder="HH: 7">      
+			<input type="text" id="textBoxMMinicio" style="width: 50px" placeholder="MM: 00">
+				<br><br>
+			Hora Fin: <input type="text" id="textBoxHHfin" style="width: 50px" placeholder="HH: 9">      
+			<input type="text" id="textBoxMMfin" style="width: 50px" placeholder="MM: 00">
+				<br><br>
+			<button id="bAgregarDia" onclick="AgregarDiaCurso()">Agregar dia curso</button>
+
+
+
+				<hr><hr>
+
+
+
+			<button id="bAgregarCurso" onclick="AgregarCurso()">Agregar curso</button>
+
+
+
+				<hr><hr>
+				<hr><hr>
+
+
+
+			Codigo del Curso
+			<input type="text" id="textBoxBuscarCurso" style="width: 60px" placeholder="e.g: 770">
+			<button id="bBuscarCurso" onclick="BuscarCurso()">Buscar</button>
+				<br><br>
+			<button id="bEliminarCurso" onclick="EliminarCurso()">Eliminar Curso</button>
+			<button id="bVisualizarCurso" onclick="VisualizarCurso()">Visualizar Curso</button>
+
+
+
+				<hr><hr>
+			<button id="bSalir" onclick="CambiarPagina('http://192.168.56.1:8080/administracion/AdminCP.html')">Regresar</button>
 		</center>
+		<script type="text/javascript" src="Administrar_Horarios.js"></script>
 	</body>
 </html>
